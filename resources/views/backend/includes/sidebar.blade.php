@@ -75,6 +75,25 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item nav-dropdown">
+                    <a class="nav-link nav-dropdown-toggle" href="#">
+                        <i class="nav-icon far fa-user"></i>
+                        Inquiries
+                    </a>
+
+                    <ul class="nav-dropdown-items">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('admin.vendor_inquiry.index')}}">
+                                Vendor Inquiry
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('admin.user_inquiry.index')}}">
+                                User Inquiry
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <!-- <li class="nav-item nav-dropdown {{
                     active_class(Active::checkUriPattern('admin/log-viewer*'), 'open')
                 }}">

@@ -3,6 +3,8 @@
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\Sub_categoryController;
+use App\Http\Controllers\Backend\Vendor_inquiryController;
+use App\Http\Controllers\Backend\User_inquiryController;
 
 // All route names are prefixed with 'admin.'.
 Route::redirect('/', '/admin/dashboard', 301);
@@ -24,3 +26,11 @@ Route::get('category/sub/edit/{id}', [Sub_categoryController::class, 'edit'])->n
 Route::post('category/sub/update', [Sub_categoryController::class, 'update'])->name('sub_category.update');
 Route::get('category/sub/delete/{id}', [Sub_categoryController::class, 'delete'])->name('sub_category.delete');
 Route::get('category/sub/show/{id}', [Sub_categoryController::class, 'show'])->name('sub_category.show');
+
+Route::get('vendor/inquiry', [Vendor_inquiryController::class, 'index'])->name('vendor_inquiry.index');
+Route::get('vendor/inquiry/show/{id}', [Vendor_inquiryController::class, 'show'])->name('vendor_inquiry.show');
+Route::get('vendor/inquiry/delete/{id}', [Vendor_inquiryController::class, 'delete'])->name('vendor_inquiry.delete');
+
+Route::get('user/inquiry', [User_inquiryController::class, 'index'])->name('user_inquiry.index');
+Route::get('user/inquiry/show/{id}', [User_inquiryController::class, 'show'])->name('user_inquiry.show');
+Route::get('user/inquiry/delete/{id}', [User_inquiryController::class, 'delete'])->name('user_inquiry.delete');
