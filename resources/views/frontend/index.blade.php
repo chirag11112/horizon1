@@ -1,40 +1,218 @@
 @extends('frontend.layouts.app')
 
-@section('title', app_name() . ' | ' . __('navs.general.home'))
+@section('title', 'Indiasearch 360')
 
 @section('content')
-    <div class="row mb-4">
-        <div class="col">
-            <div class="card">
-                <div class="card-header">
-                    <i class="fas fa-home"></i> @lang('navs.general.home')
+<section class="site-hero overlay" data-stellar-background-ratio="0.5" style="background-image: url({{asset('frontend/images/big_image_1.jpg')}});">
+    <div class="container">
+        <div class="row align-items-center site-hero-inner justify-content-center">
+            <div class="col-md-8 text-center">
+                <div class="mb-5 element-animate">
+                    <h1>Find your perfect place.</h1>
+                    <p>Discover &amp; connect with great places around the world.</p>
                 </div>
-                <div class="card-body">
-                    @lang('strings.frontend.welcome_to', ['place' => app_name()])
-                </div>
-            </div><!--card-->
-        </div><!--col-->
-    </div><!--row-->
+                <form class="form-inline element-animate" id="search-form">
+                    <label for="s" class="sr-only">Location</label>
+                    <input type="text" class="form-control form-control-block search-input" placeholder="Search Category">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END section -->
 
-    <div class="row mb-4">
-        <div class="col">
-            <example-component></example-component>
-        </div><!--col-->
-    </div><!--row-->
-
+<section class="feature-destination">
+  <div class="container">
     <div class="row">
-        <div class="col">
-            <div class="card">
-                <div class="card-header">
-                    <i class="fab fa-font-awesome-flag"></i> Font Awesome @lang('strings.frontend.test')
+      @if(!empty($product_category) && count($product_category) > 0)
+        @foreach($product_category as $category)
+          <div class="col-md-4 element-animate ">
+          @if(!empty($category->image) && file_exists(public_path('uploads/category/'.$category->image)))
+            <a href="{{route('frontend.sub_category',$category->id)}}" class="img-bg" style="background-image: url('{{asset('uploads/category/'.$category->image)}}')">
+            @else
+            <a href="{{route('frontend.sub_category',$category->id)}}" class="img-bg" style="background-image: url('{{asset('frontend/images/img_1.jpg')}}')">
+            @endif
+              <div class="text">
+                <!-- <span class="icon ion-ios-location"></span> -->
+                <h2>{{ucfirst($category->name)}}</h2>
+                <p>View Sub Category</p>
+              </div>
+            </a>
+          </div>
+        @endforeach
+      @endif
+    </div>
+  </div>
+</section>
+    <!-- END section -->
+
+    <section class="site-section">
+      <div class="container">
+        <div class="row justify-content-center mb-5">
+          <div class="col-md-7 text-center">
+            <h2>Top Destinations</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum magnam illum maiores adipisci pariatur, eveniet.</p>
+          </div>
+        </div>
+        <div class="row top-destination">
+          <div class="col-lg-2 col-md-4 col-sm-6 col-12">
+            <a href="#" class="place">
+              <img src="{{asset('frontend/images/img_1.jpg')}}" alt="Image placeholder">
+              <h2>Trogir, Croatia</h2>
+              <p>Visit This Place</p>
+            </a>
+          </div>
+          <div class="col-lg-2 col-md-4 col-sm-6 col-12">
+            <a href="#" class="place">
+              <img src="{{asset('frontend/images/img_2.jpg')}}" alt="Image placeholder">
+              <h2>Stockton Beach, Australia</h2>
+              <p>Visit This Place</p>
+            </a>
+          </div>
+          <div class="col-lg-2 col-md-4 col-sm-6 col-12">
+            <a href="#" class="place">
+              <img src="{{asset('frontend/images/img_3.jpg')}}" alt="Image placeholder">
+              <h2>Desert, Morocco</h2>
+              <p>Visit This Place</p>
+            </a>
+          </div>
+          <div class="col-lg-2 col-md-4 col-sm-6 col-12">
+            <a href="#" class="place">
+              <img src="{{asset('frontend/images/img_4.jpg')}}" alt="Image placeholder">
+              <h2>Taj Mahal, India</h2>
+              <p>Visit This Place</p>
+            </a>
+          </div>
+          <div class="col-lg-2 col-md-4 col-sm-6 col-12">
+            <a href="#" class="place">
+              <img src="{{asset('frontend/images/img_5.jpg')}}" alt="Image placeholder">
+              <h2>Eiffel Tower, France</h2>
+              <p>Visit This Place</p>
+            </a>
+          </div>
+          <div class="col-lg-2 col-md-4 col-sm-6 col-12">
+            <a href="#" class="place">
+              <img src="{{asset('frontend/images/img_6.jpg')}}" alt="Image placeholder">
+              <h2>Opera House, Australia</h2>
+              <p>Visit This Place</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END section -->
+    
+    <section class="section-cover" data-stellar-background-ratio="0.5" style="background-image: url({{asset('frontend/images/big_image_2.jpg')}});">
+      <div class="container">
+        <div class="row justify-content-center align-items-center intro">
+          <div class="col-md-7 text-center element-animate">
+            <h2>Get 10% off On Your Next Travel</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto quidem tempore expedita facere facilis, dolores!</p>
+            <p><a href="#" class="btn btn-black">Get Started</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END section -->
+    
+    <section class="site-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 pr-5">
+            
+            <h2 class="mb-3">More Featured <br> Destinations</h2>
+            <p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+            
+            <div class="mb-3">
+              <a href="#" class="btn btn-primary custom-prev mr-2 mb-2"><span class="ion-android-arrow-back"></span></a> 
+              <a href="#" class="btn btn-primary custom-next mr-2 mb-2"><span class="ion-android-arrow-forward"></span></a>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="row">
+              <div class="col-md-12 slider-wrap">
+                <div class="owl-carousel owl-theme no-nav js-carousel-1">
+                  
+                  <a href="#" class="img-bg" style="background-image: url('{{asset('frontend/images/img_2.jpg')}}')">
+                    <div class="text">
+                      <span class="icon ion-ios-location"></span>
+                      <h2>Stockton Beach, Austrlia</h2>
+                      <p>Visit This Place</p>
+                    </div>
+                  </a>
+
+                  <a href="#" class="img-bg" style="background-image: url('{{asset('frontend/images/img_1.jpg')}}')">
+                    <div class="text">
+                      <span class="icon ion-ios-location"></span>
+                      <h2>Trogir, Croatia</h2>
+                      <p>Visit This Place</p>
+                    </div>
+                  </a>
+
+                  <a href="#" class="img-bg last" style="background-image: url('{{asset('frontend/images/img_3.jpg')}}')">
+                    <div class="text">
+                      <span class="icon ion-ios-location"></span>
+                      <h2>Desert, Morocco</h2>
+                      <p>Visit This Place</p>
+                    </div>
+                  </a>
+
+                  <a href="#" class="img-bg" style="background-image: url('{{asset('frontend/images/img_2.jpg')}}')">
+                    <div class="text">
+                      <span class="icon ion-ios-location"></span>
+                      <h2>Stockton Beach, Austrlia</h2>
+                      <p>Visit This Place</p>
+                    </div>
+                  </a>
+
+                  <a href="#" class="img-bg" style="background-image: url('{{asset('frontend/images/img_1.jpg')}}')">
+                    <div class="text">
+                      <span class="icon ion-ios-location"></span>
+                      <h2>Trogir, Croatia</h2>
+                      <p>Visit This Place</p>
+                    </div>
+                  </a>
+
+                  <a href="#" class="img-bg last" style="background-image: url('{{asset('frontend/images/img_3.jpg')}}')">
+                    <div class="text">
+                      <span class="icon ion-ios-location"></span>
+                      <h2>Desert, Morocco</h2>
+                      <p>Visit This Place</p>
+                    </div>
+                  </a>
+
+                  <a href="#" class="img-bg" style="background-image: url('{{asset('frontend/images/img_2.jpg')}}')">
+                    <div class="text">
+                      <span class="icon ion-ios-location"></span>
+                      <h2>Stockton Beach, Austrlia</h2>
+                      <p>Visit This Place</p>
+                    </div>
+                  </a>
+
+                  <a href="#" class="img-bg" style="background-image: url('{{asset('frontend/images/img_1.jpg')}}')">
+                    <div class="text">
+                      <span class="icon ion-ios-location"></span>
+                      <h2>Trogir, Croatia</h2>
+                      <p>Visit This Place</p>
+                    </div>
+                  </a>
+
+                  <a href="#" class="img-bg last" style="background-image: url('{{asset('frontend/images/img_3.jpg')}}')">
+                    <div class="text">
+                      <span class="icon ion-ios-location"></span>
+                      <h2>Desert, Morocco</h2>
+                      <p>Visit This Place</p>
+                    </div>
+                  </a>
+
+
                 </div>
-                <div class="card-body">
-                    <i class="fas fa-home"></i>
-                    <i class="fab fa-facebook"></i>
-                    <i class="fab fa-twitter"></i>
-                    <i class="fab fa-pinterest"></i>
-                </div><!--card-body-->
-            </div><!--card-->
-        </div><!--col-->
-    </div><!--row-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END section -->
 @endsection

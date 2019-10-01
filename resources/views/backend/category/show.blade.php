@@ -16,6 +16,12 @@
                 <div class="tab-content">
                     <div class="tab-pane active" id="overview" role="tabpanel" aria-expanded="true">
                         <table class="table table-hover">
+                        <tr>
+                            <th>Image</th>
+                            <td>
+                                <img src="{{asset('uploads/category/'.$category->image)}}" style="height: 70px; width: 70px;">
+                            </td>
+                        </tr>
                             <tr>
                                 <th>Name</th>
                                 <td>{{$category->name}}</td>

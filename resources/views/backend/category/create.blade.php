@@ -3,7 +3,7 @@
 @section('title', 'Create')
 
 @section('content')
-    {{ html()->form('POST', route('admin.category.store'))->class('form-horizontal')->open() }}
+    {{Form::open(['url' => route('admin.category.store'), 'files' => true, 'class' => 'form-horizontal'])}}
         <div class="card">
             <div class="card-body">
                 <div class="row">
@@ -19,19 +19,13 @@
                 <div class="row mt-4 mb-4">
                     <div class="col">
                         <div class="form-group row">
-                            {{ html()->label('Name')->class('col-md-2 form-control-label')->for('name') }}
-
+                        <label class="col-md-2 form-control-label">Name</label>
                             <div class="col-md-10">
-                                {{ html()->text('name')
-                                    ->class('form-control')
-                                    ->placeholder('Name')
-                                    ->attribute('maxlength', 191)
-                                    ->required()
-                                    ->autofocus() }}
+                                {{Form::text('name',null,['placeholder' => 'Name','class' => 'form-control'])}}
                             </div><!--col-->
                         </div><!--form-group-->
                         <div class="form-group row">
-                            {{ html()->label('Status')->class('col-md-2 form-control-label')->for('status') }}
+                            <label class="col-md-2 form-control-label">Status</label>
 
                             <div class="col-md-10">
                                 <select name="status" class="form-control">
@@ -42,6 +36,12 @@
                             </div><!--col-->
                         </div><!--form-group-->
                         <div class="form-group row">
+                            <label class="col-md-2 form-control-label">Image</label>
+                            <div class="col-md-10">
+                                <input type="file" name="image">
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <div class="col-md-10">
                                 <input type="submit" name="submit" class="btn btn-success" value="submit">
                             </div><!--col-->
@@ -50,5 +50,5 @@
                 </div><!--row-->
             </div><!--card-body-->
         </div><!--card-->
-    {{ html()->form()->close() }}
+    {{ Form::close() }}
 @endsection

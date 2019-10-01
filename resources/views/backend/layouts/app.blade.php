@@ -32,7 +32,9 @@
         <main class="main">
             @include('includes.partials.demo')
             @include('includes.partials.logged-in-as')
-            {!! Breadcrumbs::render() !!}
+            <ol class="breadcrumb">
+                <li></li>    
+            </ol>
 
             <div class="container-fluid">
                 <div class="animated fadeIn">

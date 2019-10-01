@@ -37,6 +37,16 @@ class Sub_categoryController extends Controller
 
     	$category = new Product_sub_category;
     	$category->name = $request->name;
+
+        if ($request->hasFile('image')) 
+        {
+            $image = $request->file('image');
+            $name = time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/uploads/category');
+            $image->move($destinationPath, $name);        
+            $category->image = $name;
+        }
+
         $category->category_id = $request->category_id;
     	$category->status = $request->status;
     	$category->save();
@@ -67,6 +77,16 @@ class Sub_categoryController extends Controller
 
     	$category = Product_sub_category::findOrfail($request->id);
     	$category->name = $request->name;
+
+        if ($request->hasFile('image')) 
+        {
+            $image = $request->file('image');
+            $name = time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/uploads/category');
+            $image->move($destinationPath, $name);        
+            $category->image = $name;
+        }
+
         $category->category_id = $request->category_id;
     	$category->status = $request->status;
     	$category->save();

@@ -3,7 +3,7 @@
 @section('title', 'Create')
 
 @section('content')
-    {{ Form::model($category,['url' => route('admin.sub_category.update')]) }}
+    {{ Form::model($category,['url' => route('admin.sub_category.update'),'files' => true]) }}
         <div class="card">
             <div class="card-body">
                 <div class="row">
@@ -37,6 +37,12 @@
                                 {{Form::select('status',[1=>'Active',0=>'Inactive'],null,['class' => 'form-control'])}}
                             </div><!--col-->
                         </div><!--form-group-->
+                        <div class="form-group row">
+                            <label class="col-md-2 form-control-label">Image</label>
+                            <div class="col-md-10">
+                                <input type="file" name="image">
+                            </div>
+                        </div>
                         <div class="form-group row">
                             <div class="col-md-10">
                                 <input type="submit" name="submit" class="btn btn-success" value="submit">

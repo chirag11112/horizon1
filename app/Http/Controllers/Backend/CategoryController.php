@@ -33,6 +33,15 @@ class CategoryController extends Controller
 	    ]);
 
     	$category = new Product_category;
+        if ($request->hasFile('image')) 
+        {
+            $image = $request->file('image');
+            $name = time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/uploads/category');
+            $image->move($destinationPath, $name);        
+            $category->image = $name;
+        }
+
     	$category->name = $request->name;
     	$category->status = $request->status;
     	$category->save();
@@ -60,6 +69,16 @@ class CategoryController extends Controller
 	    ]);
 
     	$category = Product_category::findOrfail($request->id);
+
+        if ($request->hasFile('image')) 
+        {
+            $image = $request->file('image');
+            $name = time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/uploads/category');
+            $image->move($destinationPath, $name);        
+            $category->image = $name;
+        }
+
     	$category->name = $request->name;
     	$category->status = $request->status;
     	$category->save();

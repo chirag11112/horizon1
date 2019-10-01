@@ -24,6 +24,7 @@
                         <thead>
                         <tr>
                             <th>Sr.No</th>
+                            <th>Image</th>
                             <th>Name</th>
                             <th>Category</th>
                             <th>Status</th>
@@ -35,6 +36,9 @@
                         @foreach($categories as $category)
                             <tr>
                                 <td>{{ $i }}</td>
+                                <td>
+                                    <img src="{{asset('uploads/category/'.$category->image)}}" style="height: 70px; width: 70px;">
+                                </td>
                                 <td>{{ $category->name }}</td>
                                 <td>{{ $category->category }}</td>
                                 <td>{{ $category->status == 1 ? 'Active' : 'Inactive' }}</td>
